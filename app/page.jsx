@@ -20,8 +20,7 @@ function page() {
     setMessage(`
     Dear ${name},\n\n We are thrilled to extend our heartfelt invitation to you for the joyous wedding celebration\n of Mr. John and Mrs. Jane, which will take place on Sunday, 20th August 2024. Your presence\n would add immense joy to this special day. Please find attached the invitation card for further details \n${imageUrl}`)
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "256705801633";
-    setLink(`https://wa.me/${phoneNumber}?text=${encodedMessage}`)
+    setLink(`https://wa.me/${contact}?text=${encodedMessage}`)
     console.log(name, contact);
     setGenerated(true);
 
