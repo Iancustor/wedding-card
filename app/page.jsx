@@ -1,26 +1,31 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import imageEl from "/public/images/watsup.png";
-import imageCard from "/public/images/card.jpg";
+import imageEl from "../public/images/watsup.png";
+import imageCard from "../public/images/card.jpg";
 import Link from "next/link";
+import { generateImageUrl } from "./utils/generateImageUrl";
 
 function page() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
+  const [generated, setGenerated] = useState(false);
 
-  const whatsappUrl = `https://wa.me/${name}?text=Hello%20${contact},https://wedding-card-amber.vercel.app/`;
+  const imageUrl = generateImageUrl(imageCard);
+  const [message,setMessage] = useState("");
+  const [whatsappLink,setLink] = useState("");
 
   function handleSubmition(e) {
     e.preventDefault();
-    // console.log(name, email, contact);
-    handleInput();
-  }
+    setMessage(`
+    Dear ${name},\n\n We are thrilled to extend our heartfelt invitation to you for the joyous wedding celebration\n of Mr. John and Mrs. Jane, which will take place on Sunday, 20th August 2024. Your presence\n would add immense joy to this special day. Please find attached the invitation card for further details \n${imageUrl}`)
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = "256705801633";
+    setLink(`https://wa.me/${phoneNumber}?text=${encodedMessage}`)
+    console.log(name, contact);
+    setGenerated(true);
 
-  function handleInput() {
     setContact("");
-    setEmail("");
     setName("");
   }
 
@@ -36,17 +41,19 @@ function page() {
           <h2 className="font-extrabold">
             Joel Isaac Kakembo & Vanessa Ssekajja
           </h2>
-          <Link
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white flex items-center justify-center w-56 px-4 rounded-tr-2xl rounded-bl-2xl"
-          >
-            <div className="">
-              <Image src={imageEl} alt="" className="w-12 h-10 " />
-            </div>
-            Share
-          </Link>
+          {generated && (
+            <Link
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white flex items-center justify-center w-56 px-4 rounded-tr-2xl rounded-bl-2xl"
+            >
+              <div className="">
+                <Image src={imageEl} alt="" className="w-12 h-10 " />
+              </div>
+              Share
+            </Link>
+          )}
         </div>
         <form
           onSubmit={handleSubmition}
@@ -68,17 +75,17 @@ function page() {
           </div>
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900">
-              Contact
+              Whatsup Number(start With Country code)
             </label>
             <input
-              placeholder="Contact"
+              placeholder="Eg 256705801633"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
             />
           </div>
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900">
               Email
             </label>
@@ -89,7 +96,7 @@ function page() {
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
             />
-          </div>
+          </div> */}
           <div>
             <button
               type="submit"
