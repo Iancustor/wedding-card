@@ -10,7 +10,7 @@ function page() {
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
 
-  const whatsappUrl = `https://wa.me/${name}?text=Hello%20${contact},email${email},https://wedding-card-amber.vercel.app/`;
+  const whatsappUrl = `https://wa.me/${name}?text=Hello%20${contact},https://wedding-card-amber.vercel.app/`;
 
   function handleSubmition(e) {
     e.preventDefault();
