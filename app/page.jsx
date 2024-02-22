@@ -30,15 +30,15 @@ const router =useRouter()
   }
 
   return (
-    <div className="grid  lg:flex md:flex lg:min-h-screen md:min-h-screen  place-content-center py:2   bg-red-100 ">
-      <div className="  p-4">
-        <div className=" bg-red-500 flex place-content-center  px-5 py-4 rounded ">
+    <div className="flex lg:flex-row flex-col min-h-screen justify-center  bg-red-100 ">
+      <div className="p-4 order-2 lg:order-1 w-full lg:w-1/2">
+        <div className=" bg-red-500 flex items-center justify-center  px-5 py-4 rounded ">
           <Image src={imageCard} alt="" width={300} height={350} />
         </div>
       </div>
-      <div className="  gap-4 flex flex-col place-content-center  p-4">
+      <div className="gap-4 flex flex-col p-4 max-w-4xl lg:order-2 order-1 w-full lg:w-1/2">
         <div className="flex gap-4 items-center justify-center flex-col ">
-          <h2 className="font-extrabold">
+          <h2 className="font-extrabold text-3xl">
             Joel Isaac Kakembo & Vanessa Ssekajja
           </h2>
           {/* {generated && (
