@@ -11,7 +11,8 @@ function page() {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [generated, setGenerated] = useState(false);
-  const imageUrl = generateImageUrl(imageCard);
+  // const imageUrl = generateImageUrl(imageCard);
+  const imageUrl = "https://res.cloudinary.com/dp0tf8poo/image/upload/v1708624122/gakor8kcbm19i0zf9qf3.jpg";
 const router =useRouter()
   function handleSubmition() {
     const message=`
