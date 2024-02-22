@@ -5,25 +5,26 @@ import imageEl from "../public/images/watsup.png";
 import imageCard from "../public/images/card.jpg";
 import Link from "next/link";
 import { generateImageUrl } from "./utils/generateImageUrl";
+import { useRouter } from "next/navigation";
 
 function page() {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [generated, setGenerated] = useState(false);
-
   const imageUrl = generateImageUrl(imageCard);
-  const [message,setMessage] = useState("");
-  const [whatsappLink,setLink] = useState("");
-
-  function handleSubmition(e) {
-    e.preventDefault();
-    setMessage(`
-    Dear ${name},\n\n We are thrilled to extend our heartfelt invitation to you for the joyous wedding celebration\n of Mr. John and Mrs. Jane, which will take place on Sunday, 20th August 2024. Your presence\n would add immense joy to this special day. Please find attached the invitation card for further details \n${imageUrl}`)
+const router =useRouter()
+  function handleSubmition() {
+    const message=`
+    Dear ${name},\n\n We are thrilled to extend our heartfelt invitation to you for the joyous wedding celebration\n of Mr. John and Mrs. Jane, which will take place on Sunday, 20th August 2024. Your presence\n would add immense joy to this special day. Please find attached the invitation card for further details \n${imageUrl}`;
+    console.log(message)
     const encodedMessage = encodeURIComponent(message);
-    setLink(`https://wa.me/${contact}?text=${encodedMessage}`)
-    console.log(name, contact);
-    setGenerated(true);
+    const whatsappLink=`https://wa.me/${contact}?text=${encodedMessage}`;
 
+    router.push(whatsappLink)
+    console.log(name, contact);
+
+    console.log(whatsappLink);
+    setGenerated(true);
     setContact("");
     setName("");
   }
@@ -40,7 +41,7 @@ function page() {
           <h2 className="font-extrabold">
             Joel Isaac Kakembo & Vanessa Ssekajja
           </h2>
-          {generated && (
+          {/* {generated && (
             <Link
               href={whatsappLink}
               target="_blank"
@@ -52,11 +53,9 @@ function page() {
               </div>
               Share
             </Link>
-          )}
+          )} */}
         </div>
-        <form
-          onSubmit={handleSubmition}
-          action=""
+        <div
           className=" px-7 bg-red-200 py-4 rounded-t-xl"
         >
           <div className="mb-6">
@@ -98,13 +97,14 @@ function page() {
           </div> */}
           <div>
             <button
-              type="submit"
+            onClick={handleSubmition}
+              type="button"
               className="text-black  hover:text-white border bg-white hover:border-transparent hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
             >
-              Generate Link
+              Send Invite
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
