@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import imageEl from "../public/images/watsup.png";
-import imageCard from "../public/images/card.png";
+import imageCard from "../public/images/card1.png";
 import Link from "next/link";
 import { generateImageUrl } from "./utils/generateImageUrl";
 import { useRouter } from "next/navigation";
