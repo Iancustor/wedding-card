@@ -3,14 +3,11 @@ import Image from "next/image";
 import React, { useState } from "react";
 import imageEl from "../public/images/watsup.png";
 import imageCard from "../public/images/card1.png";
-import Link from "next/link";
-import { generateImageUrl } from "./utils/generateImageUrl";
 import { useRouter } from "next/navigation";
 
 function page() {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
-  const [generated, setGenerated] = useState(false);
 
   const imageUrl =
     "https://res.cloudinary.com/dp0tf8poo/image/upload/v1708669141/bse9rbzizzo4rktkkoue.png";
@@ -26,18 +23,8 @@ function page() {
 
     router.push(whatsappLink);
     // console.log(name, contact);
-
     setContact("");
     setName("");
-    setGenerated(validateInput(contact));
-  }
-  function validateInput() {
-    if (generated) {
-      // Your submission logic here
-      console.log("Form submitted with valid input:", contact);
-    } else {
-      console.log("Form not submitted. Please provide valid input.");
-    }
   }
   return (
     <div className="flex lg:flex-row flex-col min-h-screen lg:px-56 py-4 justify-center  bg-red-100 ">
@@ -53,19 +40,6 @@ function page() {
             <br />
             Vanessa Ssekajja
           </h2>
-          {/* {generated && (
-            <Link
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white flex items-center justify-center w-56 px-4 rounded-tr-2xl rounded-bl-2xl"
-            >
-              <div className="">
-                <Image src={imageEl} alt="" className="w-12 h-10 " />
-              </div>
-              Share
-            </Link>
-          )} */}
         </div>
         <div className=" px-7 bg-red-200 py-4 rounded-t-xl">
           <div className="mb-6">
