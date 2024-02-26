@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import imageEl from "../public/images/watsup.png";
-import imageCard from "/public/images/card1.png";
 import { useRouter } from "next/navigation";
 
 function page() {
@@ -10,7 +9,7 @@ function page() {
   const [contact, setContact] = useState("");
 
   const imageUrl =
-    "https://res.cloudinary.com/dp0tf8poo/image/upload/v1708669141/bse9rbzizzo4rktkkoue.png";
+    "https://res.cloudinary.com/dp0tf8poo/image/upload/v1708934651/card_qufayu.jpg";
   const router = useRouter();
   function handleSubmition() {
     const message = `
@@ -30,7 +29,7 @@ function page() {
     <div className="flex lg:flex-row flex-col min-h-screen lg:px-56 py-4 justify-center  bg-red-100 ">
       <div className="p-4 order-2 lg:order-1 w-full lg:w-1/2">
         <div className="flex items-center justify-center  px-2 py-4 rounded ">
-          <Image src={imageCard} alt="" width={300} height={350} />
+          <Image src={imageUrl} alt="" width={300} height={350} />
         </div>
       </div>
       <div className="gap-4 flex flex-col p-4 max-w-4xl lg:order-2 order-1 w-full lg:w-1/2">
